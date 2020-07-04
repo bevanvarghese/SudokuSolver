@@ -37,22 +37,24 @@ def findEmpty():
     for i in range(9):
         for j in range(9):
             if board[i][j]==0:
-                return i,j
+                #print(i,j)
+                return [i,j]
     return False
 
 def solve(board):
-    found = findEmpty
+    found = findEmpty()
     if not found:
         return True
     row, col = found
     for n in range(1, 10):
         if validMove(row, col, n):
             board[row][col] = n
-            if solve(board, found):
+            if solve(board):
                 return True
             #backtracking
             board[row][col] = 0
     return False
 
+solve(board)
 for i in range(9):
     print(board[i])
