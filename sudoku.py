@@ -1,0 +1,32 @@
+board = [[5,3,0,0,7,0,0,0,0],
+         [6,0,0,1,9,5,0,0,0],
+         [0,9,8,0,0,0,0,6,0],
+         [8,0,0,0,6,0,0,0,3],
+         [4,0,0,8,0,3,0,0,1],
+         [7,0,0,0,2,0,0,0,6],
+         [0,6,0,0,0,0,2,8,0],
+         [0,0,0,4,1,9,0,0,5],
+         [0,0,0,0,8,0,0,7,9]]
+
+def validMove(row, col, n):
+    #check row
+    for i in range(0,9):
+        if board[row][i]==n:
+            return False
+    #check column
+    for i in range(0,9):
+        if board[i][col]==n:
+            return False
+    #check 3x3 box
+    r_top = 3*(row//3)
+    c_left = 3*(col//3)
+    for i in [r_top, r_top+1, r_top+2]:
+        for j in [c_left, c_left+1, c_left+2]:
+            if board[i][j]==n:
+                return False
+    return True
+
+print(validMove(1,1,6))
+print(validMove(4,4,2))
+print(validMove(8,7,7))
+print(validMove(4,4,5))
