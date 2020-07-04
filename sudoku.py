@@ -26,7 +26,33 @@ def validMove(row, col, n):
                 return False
     return True
 
-print(validMove(1,1,6))
-print(validMove(4,4,2))
-print(validMove(8,7,7))
-print(validMove(4,4,5))
+#print(validMove(1,1,6))
+#print(validMove(4,4,2))
+#print(validMove(8,7,7))
+#print(validMove(4,4,5))
+
+
+
+def findEmpty():
+    for i in range(9):
+        for j in range(9):
+            if board[i][j]==0:
+                return i,j
+    return False
+
+def solve(board):
+    found = findEmpty
+    if not found:
+        return True
+    row, col = found
+    for n in range(1, 10):
+        if validMove(row, col, n):
+            board[row][col] = n
+            if solve(board, found):
+                return True
+            #backtracking
+            board[row][col] = 0
+    return False
+
+for i in range(9):
+    print(board[i])
