@@ -27,7 +27,7 @@ board = [[5,3,0,0,7,0,0,0,0],
          [0,0,0,4,1,9,0,0,5],
          [0,0,0,0,8,0,0,7,9]]
 cell_colors = [[GREY for i in range(9)] for j in range(9)]
-solving = False
+solving = True
 
 def validMove(row, col, n):
     #check row
@@ -79,23 +79,36 @@ while True:
             pygame.quit()
             sys.exit()
             quit()
-        solve(board)
+        #solve(board)
         #
-        #if event.type == pygame.KEYDOWN:
-        #    if event.type == pygame.K_SPACE:
-        #        solve(board)
-        #       solving = True
+        if event.type == pygame.KEYDOWN:
+            if event.type == pygame.K_SPACE:
+                solving = True
+
         #drawing each cell
-        for i in range(9):
-            for j in range(9):
-                if(cell_colors[i][j]==GREY):
+        if not solving:
+            for i in range(9):
+                for j in range(9):
+                    #if(cell_colors[i][j]==GREY):
                     pygame.draw.rect(surface, cell_colors[i][j], (30+j*CELLSIZE, 30+i*CELLSIZE, CELLSIZE, CELLSIZE), 1)
-                else:
+                    #else:
+                    #pygame.draw.rect(surface, cell_colors[i][j], (30+j*CELLSIZE, 30+i*CELLSIZE, CELLSIZE, CELLSIZE), 2)
+                    if board[i][j]!=0:
+                        surface.blit(font.render(str(board[i][j]), True, BLACK), (30+(j+0.4)*CELLSIZE, 30+(i+0.2)*CELLSIZE))
+                    #elif solving:
+                    #surface.blit(font.render(str(board[i][j]), True, BLUE), (30+(j+0.4)*CELLSIZE, 30+(i+0.2)*CELLSIZE))
+        else:
+            solve(board)
+            for i in range(9):
+                for j in range(9):
+                    if cell_colors[i][j]==GREY:
+                        pygame.draw.rect(surface, cell_colors[i][j], (30+j*CELLSIZE, 30+i*CELLSIZE, CELLSIZE, CELLSIZE), 1)
+                        surface.blit(font.render(str(board[i][j]), True, BLACK), (30+(j+0.4)*CELLSIZE, 30+(i+0.2)*CELLSIZE))
+                        continue
                     pygame.draw.rect(surface, cell_colors[i][j], (30+j*CELLSIZE, 30+i*CELLSIZE, CELLSIZE, CELLSIZE), 2)
-                if board[i][j]!=0:
                     surface.blit(font.render(str(board[i][j]), True, BLUE), (30+(j+0.4)*CELLSIZE, 30+(i+0.2)*CELLSIZE))
-                elif solving:
-                    surface.blit(font.render(str(board[i][j]), True, BLUE), (30+(j+0.4)*CELLSIZE, 30+(i+0.2)*CELLSIZE))
+
+
         #outermost boundaries
         pygame.draw.rect(surface, BLACK,(30, 30, WIDTH-60, HEIGHT-60), 3)
         #rectangle for middle three columns
