@@ -26,13 +26,6 @@ def validMove(row, col, n):
                 return False
     return True
 
-#print(validMove(1,1,6))
-#print(validMove(4,4,2))
-#print(validMove(8,7,7))
-#print(validMove(4,4,5))
-
-
-
 def findEmpty():
     for i in range(9):
         for j in range(9):
