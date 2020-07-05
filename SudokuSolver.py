@@ -44,10 +44,12 @@ def solve(board):
             board[row][col] = n
             if solve(board):
                 return True
-            #backtracking
             board[row][col] = 0
     return False
 
-solve(board)
-for i in range(9):
-    print(board[i])
+def main():
+    solve(board)
+    for i in range(9):
+        print(board[i])
+
+main()
