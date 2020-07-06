@@ -11,8 +11,8 @@ A GUI-based Sudoku Solver that visualizes constraint-satisfaction using the back
 * For a visualization of the algorithm, run SudokuSolverGUI.py. Note that this requires the PyGame module installed.
 * For a text-based solver, run SudokuSolver.py.
 * To enter your own game-board, change the "board" variable in the respective file, using 0 to indicate empty cells.  
-  SudokuSolverGUI.py: lines 21-29.  
-  SudokuSolver.py: lines 1-9.
+  SudokuSolverGUI.py: lines 21-29   
+  SudokuSolver.py: lines 1-9
 
 ### Future development
 I plan on scaling this to a fully-functional game with time. 
