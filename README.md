@@ -5,7 +5,7 @@ A GUI-based Sudoku Solver that visualizes constraint-satisfaction using the back
 1. Each cell must contain a number from 1 to 9.
 2. Each row must contain every number from 1 to 9 (each appearing once).
 3. Each column must contain every number from 1 to 9 (each appearing once).
-4. The grid contains nine 3x3 boxes. Each box must contain every number from 1 to 9 (each appearing once).
+4. The grid contains nine 3x3 boxes. Each such box must contain every number from 1 to 9 (each appearing once).
 
 ### How to use?
 * For a visualization of the algorithm, run SudokuSolverGUI.py. Note that this requires the PyGame module installed.
